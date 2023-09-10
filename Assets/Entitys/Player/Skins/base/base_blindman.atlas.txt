@@ -1,0 +1,97 @@
+
+base_blindman.png
+size: 600,600
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Head
+  rotate: false
+  xy: 175, 4
+  size: 156, 148
+  orig: 156, 148
+  offset: 0, 0
+  index: -1
+L_hand
+  rotate: true
+  xy: 333, 4
+  size: 148, 151
+  orig: 148, 151
+  offset: 0, 0
+  index: -1
+R_hand
+  rotate: false
+  xy: 2, 2
+  size: 171, 150
+  orig: 171, 150
+  offset: 0, 0
+  index: -1
+back_palto
+  rotate: true
+  xy: 334, 441
+  size: 157, 144
+  orig: 157, 144
+  offset: 0, 0
+  index: -1
+book
+  rotate: false
+  xy: 334, 323
+  size: 154, 116
+  orig: 154, 116
+  offset: 0, 0
+  index: -1
+l_foot
+  rotate: false
+  xy: 334, 246
+  size: 85, 75
+  orig: 85, 75
+  offset: 0, 0
+  index: -1
+l_foot_up
+  rotate: false
+  xy: 480, 469
+  size: 70, 129
+  orig: 70, 129
+  offset: 0, 0
+  index: -1
+r_f_up
+  rotate: false
+  xy: 480, 469
+  size: 70, 129
+  orig: 70, 129
+  offset: 0, 0
+  index: -1
+neck
+  rotate: true
+  xy: 334, 161
+  size: 83, 74
+  orig: 83, 74
+  offset: 0, 0
+  index: -1
+palto
+  rotate: false
+  xy: 2, 154
+  size: 330, 444
+  orig: 330, 444
+  offset: 0, 0
+  index: -1
+r_foot
+  rotate: false
+  xy: 421, 191
+  size: 85, 75
+  orig: 85, 75
+  offset: 0, 0
+  index: -1
+taz
+  rotate: true
+  xy: 490, 343
+  size: 124, 73
+  orig: 124, 73
+  offset: 0, 0
+  index: -1
+palto_el
+  rotate: true
+  xy: 421, 268
+  size: 53, 127
+  orig: 53, 127
+  offset: 0, 0
+  index: -1

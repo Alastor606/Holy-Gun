@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
         {
             _health = 0;
             OnDie?.Invoke();
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(FabrickController))]
 public class TimerUI : MonoBehaviour
 {
     [SerializeField] private FabrickController _controller;

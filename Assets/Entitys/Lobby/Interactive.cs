@@ -3,25 +3,20 @@ using UnityEngine.UI;
 
 public class Interactive : MonoBehaviour
 {
-    [SerializeField] private Image _bg;
     [SerializeField] private Text _nameField;
-    [SerializeField] private string _name;
+    [SerializeField] private Button _acceptButton;
 
-    private void OnCollisionExit2D(Collision2D collision) => Disable();
-
-    private void OnTriggerEnter2D(Collider2D collision) => Enable();
-
-    private void Disable()
+    private void OnTriggerExit2D(Collider2D collision)
     {
+        _acceptButton.gameObject.SetActive(false);
         _nameField.enabled = false;
-        _bg.enabled = false;
-        _nameField.text = string.Empty;
     }
 
-    private void Enable()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        _acceptButton.gameObject.SetActive(true);
         _nameField.enabled = true;
-        _bg.enabled = true;
-        _nameField.text = _name;
     }
+
+
 }

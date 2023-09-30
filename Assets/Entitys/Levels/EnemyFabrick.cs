@@ -2,9 +2,8 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
-using static UnityEngine.EventSystems.EventTrigger;
-using System.Runtime.InteropServices.WindowsRuntime;
 
+[RequireComponent(typeof(FabrickController))]
 public class EnemyFabrick : MonoBehaviour
 {
     [Header("Links")]

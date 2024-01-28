@@ -10,23 +10,25 @@ public class LobbyActions : MonoBehaviour
 
     private void Start()
     {
-        Movement.singleton.GetComponent<PlayerHealth>().OnDie += OnPlayerDie;
+        Movement.singleton.GetComponent<PlayerHealth>().OnDie += GoLobby;
     }
 
     public async void StartLevel()
     {
         _currentLevel = Instantiate(_levels[0].LevelArea, Vector3.zero, Quaternion.identity);
         await Task.Delay(500);
-        Destroy(_lobby);
+        _lobby.SetActive(false);
         await Task.Delay(500);
         Movement.singleton.transform.position = Vector3.zero;
+        Movement.singleton.GetComponent<AbilityChoise>().RenderAbilityChoise();
     }
 
-    private async void OnPlayerDie()
+    private async void GoLobby()
     {
         Destroy(_currentLevel);
-        Instantiate(_lobby, Vector3.zero, Quaternion.identity);
+        _lobby.SetActive(true);
         await Task.Delay(500);
         Movement.singleton.gameObject.SetActive(true);
+        Game.HealUpPlayer();
     }
 }

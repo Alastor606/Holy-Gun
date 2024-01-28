@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2455226034217876850}
   - component: {fileID: 4635149036682640621}
-  - component: {fileID: 1605087866084553316}
+  - component: {fileID: 1400273301619326907}
   m_Layer: 0
   m_Name: revolver_base
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4635149036682640621
 SpriteRenderer:
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1369539945
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f771c1dcd355ef0479461bee26638f8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1605087866084553316
+--- !u!114 &1400273301619326907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8608969264449057600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e6a0fa7ae8f34409317b12f143839b, type: 3}
+  m_Script: {fileID: 11500000, guid: d4ea9db694a8db6409536a4b43e2836e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 1840028747695987617, guid: d5123386a6ab06c42b341989a1b91136, type: 3}
-  _coolingDown: 0.9
-  _attackRadius: 4.8
+  _damage: 4.56
+  _coolingDown: 1.13
+  _attackRadius: 6.26
+  _bullet: {fileID: 6827787943002559547, guid: d5123386a6ab06c42b341989a1b91136, type: 3}

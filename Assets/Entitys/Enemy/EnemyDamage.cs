@@ -8,20 +8,21 @@ public class EnemyDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerHealth>(out PlayerHealth health)) health.TakeDamage(_damage);
+        if (collision.TryGetComponent(out IDamageAble health)) health.TakeDamage(_damage);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerHealth>(out PlayerHealth health)) DelegateDamage(health);
+        if (collision.TryGetComponent(out IDamageAble health)) DelegateDamage(health);
     }
 
-    private async void DelegateDamage(PlayerHealth health)
+    private async void DelegateDamage(IDamageAble health)
     {
         if (!_canDamage) return;
         _canDamage = false;
         await Task.Delay(1500);
-        health.TakeDamage(_damage);
+        var hp = (PlayerHealth)health;
+        hp.TakeDamage(_damage, this);
         _canDamage = true;
     }
 

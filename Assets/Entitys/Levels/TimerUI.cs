@@ -10,7 +10,11 @@ public class TimerUI : MonoBehaviour
     private void Awake() =>
         _controller.OnTimerValueChanged += Render;
     
-    private void Render(int value) =>
+    private void Render(int value)
+    {
+        if (_timer == null) return; 
         _timer.text = TimeSpan.FromSeconds(value).ToString(@"mm\:ss");
+    }
+
     
 }

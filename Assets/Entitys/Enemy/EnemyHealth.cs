@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] private Soul _soul;
     [SerializeField] private float _maxHealth;
     private float _health;
+    public float CurrentHealth { get { return _health; } }
 
     private void OnEnable() =>
         _health = _maxHealth;
@@ -16,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
         if(_health < 0)
         {
             _health = 0;
+            Instantiate(_soul, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

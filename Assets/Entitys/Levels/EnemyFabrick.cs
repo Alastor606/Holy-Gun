@@ -20,25 +20,24 @@ public class EnemyFabrick : MonoBehaviour
     private bool _isSpawning = false;
     private int _currentLevel = 0;
 
-    private EnemyStats RandomEasyEnemy()
-    { return _easyEnemy[UnityEngine.Random.Range(0, _easyEnemy.Count - 1)]; }
+    private EnemyStats RandomEasyEnemy() =>
+        _easyEnemy[UnityEngine.Random.Range(0, _easyEnemy.Count - 1)]; 
 
-    private EnemyStats RandomHardEnemy()
-    { return _hardEnemy[UnityEngine.Random.Range(0, _hardEnemy.Count - 1)]; }
+    private EnemyStats RandomHardEnemy() =>
+        _hardEnemy[UnityEngine.Random.Range(0, _hardEnemy.Count - 1)]; 
 
-    private EnemyStats RandomMediumEnemy()
-    { return _mediumEnemy[UnityEngine.Random.Range(0, _mediumEnemy.Count - 1)]; }
+    private EnemyStats RandomMediumEnemy()=> 
+        _mediumEnemy[UnityEngine.Random.Range(0, _mediumEnemy.Count - 1)];
 
     private void Awake()
     {
         _controller.OnLevelStarted += SpawnEnemy;
-        _controller.OnLevelFinished += () => _isSpawning = false;
+        _controller.OnWaveFinished += () => _isSpawning = false;
     }
 
     private EnemyStats ChooseEnemy()
     {
-        if (_currentLevel <= 4)
-            return RandomEasyEnemy();
+        if (_currentLevel <= 4) return RandomEasyEnemy();
         else if (_currentLevel > 4 && _currentLevel <= 7)
         {
             var random = UnityEngine.Random.Range(0,1);

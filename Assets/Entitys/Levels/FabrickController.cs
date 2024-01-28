@@ -2,18 +2,17 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[RequireComponent(typeof(AbilityChoise))]
 public class FabrickController : MonoBehaviour
 {
     public Action OnLevelStarted;
-    public Action OnLevelFinished;
+    public Action OnWaveFinished;
     public Action<int> OnTimerValueChanged;
     [SerializeField] private int _levelTime;
-    [SerializeField] private AbilityChoise _controller;
 
-    private void Start() => _controller.OnAbilityChoised += Timer;
+    private void Start() => 
+        Movement.singleton.GetComponent<AbilityChoise>().OnAbilityChoised += Timer;
     private void OnDestroy() =>
-        OnLevelFinished?.Invoke();
+        OnWaveFinished?.Invoke();
 
     private async void Timer()
     {
@@ -25,9 +24,9 @@ public class FabrickController : MonoBehaviour
             time--;
             OnTimerValueChanged?.Invoke(time);
         }
-        OnLevelFinished?.Invoke();
+        OnWaveFinished?.Invoke();
+        Game.HealUpPlayer();
     }
 
-    
-
+    public void StartTimer() => Timer();
 }

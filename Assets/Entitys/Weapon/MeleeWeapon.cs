@@ -3,7 +3,7 @@ using UnityEngine;
 public class MeleeWeapon : Weapon
 {
     [SerializeField] private float _flySpeed;
-    private void Update()
+    private void FixedUpdate()
     {
         FindTarget();
     }

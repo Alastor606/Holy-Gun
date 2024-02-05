@@ -69,7 +69,6 @@ public class Movement : MonoBehaviour
     public void Accelerate(float value) =>
         _speed += value;
     
-
     public void Slow(float value)
     {
         if(_speed - value > 1)_speed -= value;

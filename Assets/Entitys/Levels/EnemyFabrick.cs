@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 [RequireComponent(typeof(FabrickController))]
 public class EnemyFabrick : MonoBehaviour
@@ -31,7 +32,7 @@ public class EnemyFabrick : MonoBehaviour
 
     private void Awake()
     {
-        _controller.OnLevelStarted += SpawnEnemy;
+        _controller.OnLevelStarted += () => StartCoroutine(nameof(SpawnEnemy));
         _controller.OnWaveFinished += () => _isSpawning = false;
     }
 
@@ -53,7 +54,7 @@ public class EnemyFabrick : MonoBehaviour
         }
     }
 
-    private async void SpawnEnemy()
+    private IEnumerator SpawnEnemy()
     {
         _isSpawning = true;
         while(_isSpawning)
@@ -64,7 +65,7 @@ public class EnemyFabrick : MonoBehaviour
                 UnityEngine.Random.Range(-_spawnArea.y / 2f, _spawnArea.y / 2f));    
                 Instantiate(ChooseEnemy(), spawnPoint, Quaternion.identity);
             }
-            await Task.Delay(TimeSpan.FromSeconds(_interval));
+            yield return new WaitForSeconds(_interval);
         }
         ClearZone();
     }

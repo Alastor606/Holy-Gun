@@ -15,7 +15,7 @@ public class RangeWeapon : Weapon
         _currentBullet = _bullet;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {   
         FindTarget();
         RotateTowardsTarget();

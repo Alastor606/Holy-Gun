@@ -19,10 +19,10 @@ public class SpellCard : MonoBehaviour
 
     public void Render(int index, int spellIndex = 0)
     {
-        _descriptionField.text = SpellStruct.Descriptions[index];
+        _descriptionField.text = SpellStruct.Spells[index][spellIndex].Description;
         CurrentSpell = SpellStruct.Spells[index][spellIndex];
-        _nameField.text = SpellStruct.Names[index];
-        ButtonListnerAdd(SpellStruct.Spells[index][spellIndex]); 
+        _nameField.text = SpellStruct.Spells[index][spellIndex].Name;
+        if(spellIndex == 0)ButtonListnerAdd(SpellStruct.Spells[index][spellIndex]); 
     }
 
     public void Choise() =>

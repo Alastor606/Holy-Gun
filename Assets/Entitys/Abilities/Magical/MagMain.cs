@@ -12,7 +12,7 @@ public class MagMain : AssetSpell
     {
         HolyWave wave = Instantiate(_wave, Movement.singleton.transform);
         _enabled = true;
-        Movement.singleton.Health.OnDie += () =>
+        Game.Health.OnDie += () =>
         {
             Destroy(wave.gameObject);
             _enabled = false;

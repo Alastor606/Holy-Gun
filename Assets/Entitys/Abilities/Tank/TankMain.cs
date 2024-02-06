@@ -6,7 +6,7 @@ public class TankMain : AssetSpell
     [SerializeField] private float _backDamageValue;
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.BackDamagePersent += _backDamageValue;
         health.OnDie += () => health.BackDamagePersent -= _backDamageValue;
     }

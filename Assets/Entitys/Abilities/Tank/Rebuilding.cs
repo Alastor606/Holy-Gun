@@ -8,7 +8,7 @@ public class Rebuilding : AssetSpell
 
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.OnDamaged += (damage) => health.TakeHeal(_heal);
         health.OnDie += () => health.OnDamaged -= (damage) => health.TakeHeal(_heal);
     }

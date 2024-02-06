@@ -9,7 +9,7 @@ public class UBerserk : AssetSpell
     private bool _onCooldown = false;
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.OnValueChanged += Check;
     }
 
@@ -18,7 +18,7 @@ public class UBerserk : AssetSpell
         if (_onCooldown) return;
         if (max * 100 / 30 <= current)
         {
-            var health = Movement.singleton.Health;
+            var health = Game.Health;
             int timer = 0;
             while(timer < _doingTime)
             {

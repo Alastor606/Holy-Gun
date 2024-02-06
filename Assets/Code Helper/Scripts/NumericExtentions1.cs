@@ -22,6 +22,16 @@ namespace CodeHelper
         public static decimal Percent(this decimal self, decimal percents) => self / 100 * percents;
         public static double Percent(this double self, double percents) => self / 100 * percents;
 
+        public static bool MoreThen(this int value1, int value2) => value1 > value2;
+        public static bool MoreThen(this float value1, float value2) => value1 > value2;
+        public static bool MoreThen(this decimal value1, decimal value2) => value1 > value2;
+        public static bool MoreThen(this double value1, double value2) => value1 > value2;
+
+        public static bool LowerThen(this int value1, int value2) => value1 < value2;
+        public static bool LowerThen(this float value1, float value2) => value1 < value2;
+        public static bool LowerThen(this decimal value1, decimal value2) => value1 < value2;
+        public static bool LowerThen(this double value1, double value2) => value1 < value2;
+
     }
 }
 

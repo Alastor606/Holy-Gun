@@ -6,6 +6,6 @@ public class NinjaMain : AssetSpell
     [SerializeField] private float _evasion;
     public override void OnTake()
     {
-        Movement.singleton.Health.Evasion += _evasion;
+        Game.Health.Evasion += _evasion;
     }
 }

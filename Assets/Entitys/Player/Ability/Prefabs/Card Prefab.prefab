@@ -395,7 +395,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8669357124717983162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8294141110886567278}
+        m_TargetAssemblyTypeName: SpellCard, Assembly-CSharp
+        m_MethodName: Choise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8294141110886567278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +424,6 @@ MonoBehaviour:
   _nameField: {fileID: 1113902410014569410}
   _imageField: {fileID: 8549821321429530726}
   _typeField: {fileID: 514208791580731949}
-  _container: {fileID: 0}
 --- !u!1 &6082914034756949163
 GameObject:
   m_ObjectHideFlags: 0

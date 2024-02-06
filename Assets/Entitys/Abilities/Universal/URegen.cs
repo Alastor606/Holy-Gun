@@ -6,7 +6,7 @@ public class URegen : AssetSpell
     [SerializeField] private float _regen;
     public override void OnTake()
     {
-        Movement.singleton.Health.Regen += _regen;
+        Game.Health.Regen += _regen;
     }
 
 }

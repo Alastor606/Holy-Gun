@@ -20,6 +20,6 @@ public class SpellStruct : MonoBehaviour
         Spells.AddRange(new List<List<Spell>> { Melee, Range, Mag, MiniGun, Ninja, Tank, Universal});
     }
 
-    public void SetCurrentType(SpellTypes T)=> CurrentType = CurrentType == default ? CurrentType = T : CurrentType;
+    public static void SetCurrentType(SpellTypes T)=> CurrentType = CurrentType == default ? CurrentType = T : CurrentType;
 }
  

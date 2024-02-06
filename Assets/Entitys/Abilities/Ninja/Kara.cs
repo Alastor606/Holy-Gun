@@ -8,7 +8,7 @@ public class Kara : AssetSpell
     [SerializeField] private float _upDamageTime, _additionalDamage;
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.OnEvade += Up;
         health.OnDie += () => health.OnEvade -= Up;
     }

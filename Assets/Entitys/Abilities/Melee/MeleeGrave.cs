@@ -11,8 +11,8 @@ public class MeleeGrave : AssetSpell
     private bool _onCooldown = false;
     public override void OnTake()
     {
-        Movement.singleton.Health.OnDie += () => _onCooldown = false;
-        Movement.singleton.Health.OnValueChanged += CheckGrave;
+        Game.Health.OnDie += () => _onCooldown = false;
+        Game.Health.OnValueChanged += CheckGrave;
     }
 
     private void CheckGrave(float max, float current)

@@ -9,7 +9,7 @@ public class NinjaGrave : AssetSpell
     private bool  _enabled = true;
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.OnValueChanged += Check;
         health.OnDie += () => health.OnValueChanged -= Check;
     }

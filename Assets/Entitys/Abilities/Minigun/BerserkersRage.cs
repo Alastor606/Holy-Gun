@@ -9,7 +9,7 @@ public class BerserkersRage : AssetSpell
     private bool _onCooldown = false;
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.OnValueChanged += Check;
     }
 

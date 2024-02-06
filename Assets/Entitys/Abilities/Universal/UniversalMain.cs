@@ -8,7 +8,7 @@ public class UniversalMain : AssetSpell
     {
         foreach(Weapon weapon in Movement.singleton.GetComponentsInChildren<Weapon>())
         {
-            weapon.UpgradeDamage(Movement.singleton.Health.MaxHealth /100 * _percent);
+            weapon.UpgradeDamage(Game.Health.MaxHealth / 100 * _percent);
         }
     }
 }

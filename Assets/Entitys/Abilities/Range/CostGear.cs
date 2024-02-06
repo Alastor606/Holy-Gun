@@ -9,7 +9,7 @@ public class CostGear : AssetSpell
     private bool _canBuff = true;
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.OnValueChanged += Buff;
         health.OnDie += () => health.OnValueChanged -= Buff;
     }
@@ -20,10 +20,10 @@ public class CostGear : AssetSpell
         _canBuff = false;
         var player = Movement.singleton;
         player.Accelerate(_speedBuff);
-        player.Health.Evasion += _evasionBuff;
+        Game.Health.Evasion += _evasionBuff;
         await Task.Delay(1000);
         player.Slow(_speedBuff);
-        player.Health.Evasion -= _evasionBuff;
+        Game.Health.Evasion -= _evasionBuff;
         await Task.Delay(_time);
         _canBuff = true;
     }

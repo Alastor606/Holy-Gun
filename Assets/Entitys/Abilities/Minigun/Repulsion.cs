@@ -10,7 +10,7 @@ public class Repulsion : AssetSpell
             weapon.Additional += (enemy) => enemy.GetComponent<Rigidbody>().AddForce(enemy.transform.position - Movement.singleton.transform.position);
         }
 
-        Movement.singleton.Health.OnDie += () =>
+        Game.Health.OnDie += () =>
         {
             foreach (var weapon in Movement.singleton.GetComponentsInChildren<Weapon>())
             {

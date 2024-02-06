@@ -22,10 +22,17 @@ public class SpellCard : MonoBehaviour
         _descriptionField.text = SpellStruct.Spells[index][spellIndex].Description;
         CurrentSpell = SpellStruct.Spells[index][spellIndex];
         _nameField.text = SpellStruct.Spells[index][spellIndex].Name;
-        if(spellIndex == 0)ButtonListnerAdd(SpellStruct.Spells[index][spellIndex]); 
+        if (spellIndex == 0)
+        {
+            ButtonListnerAdd(SpellStruct.Spells[index][spellIndex]);
+            SpellStruct.SetCurrentType(SpellStruct.Spells[index][spellIndex].Type);
+        }
     }
 
-    public void Choise() =>
+    public void Choise()
+    {
         OnSpellChoised?.Invoke(CurrentSpell.Type);
+        Debug.Log("Картачка заюзана");
+    }   
     
 }

@@ -7,7 +7,7 @@ public class Despersion : AssetSpell
     [SerializeField] private float _range, _multiply;
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.OnDamaged += (damage) =>
         {
             var rand = Random.Range(0, 100);

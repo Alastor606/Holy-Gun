@@ -15,20 +15,19 @@ public class Movement : MonoBehaviour
     [Header("Force Settings")]
     [SerializeField] private int _force;
     [SerializeField, Range(1,15)] private int _cooldown;
-    public PlayerHealth Health { get; private set; }
-    
-    public float Speed { get { return _speed; } }
     private bool _onCooldown = false, _canRunning = true, _isSliding = false;
     private Rigidbody2D _rigidbody;
-    
+    public float Speed { get { return _speed; } }
+
     private void Awake() =>
         singleton = this;
-
-    private void Start()
-    {
-        Health = GetComponent<PlayerHealth>();
+    private void Start() =>
         _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    public void Accelerate(float value) =>
+         _speed += value;
+    public void Slow(float value) =>
+        _speed -= _speed - value > 1 ? value : 0;
+
 
     private void FixedUpdate()
     {
@@ -65,13 +64,4 @@ public class Movement : MonoBehaviour
         }   
         _canRunning = true;
     }
-
-    public void Accelerate(float value) =>
-        _speed += value;
-    
-    public void Slow(float value)
-    {
-        if(_speed - value > 1)_speed -= value;
-    }
-
 }

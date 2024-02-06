@@ -21,6 +21,7 @@ public class Shop : MonoBehaviour
         {
             var cell = Instantiate(_cell,_container);
             cell.Render(ShopResourses.GetRandomItem());
+            cell.OnBuyed += Continue;
         }
     }
 

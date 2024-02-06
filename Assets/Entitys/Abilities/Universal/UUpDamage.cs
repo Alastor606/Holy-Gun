@@ -8,7 +8,7 @@ public class UUpDamage : AssetSpell
     private List<float> _mainDamages;
     public override void OnTake()
     {
-        Movement.singleton.Health.OnValueChanged += Check;
+        Game.Health.OnValueChanged += Check;
     }
 
     private void Check(float max, float current)

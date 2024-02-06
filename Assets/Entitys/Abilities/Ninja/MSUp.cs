@@ -7,7 +7,7 @@ public class MSUp : AssetSpell
     public override void OnTake()
     {
         Movement.singleton.Accelerate(_additionalSpeed);
-        Movement.singleton.Health.OnDie += () => Movement.singleton.Slow(_additionalSpeed);
+        Game.Health.OnDie += () => Movement.singleton.Slow(_additionalSpeed);
     }
         
     

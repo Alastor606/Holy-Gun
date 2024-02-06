@@ -10,7 +10,7 @@ public class DamagePerStay : AssetSpell
     {
         Movement.singleton.OnStay += StartUpDamage;
         Movement.singleton.OnMove += ResetDamage;
-        Movement.singleton.Health.OnDie += () =>
+        Game.Health.OnDie += () =>
         {
             Movement.singleton.OnStay -= StartUpDamage;
             Movement.singleton.OnMove -= ResetDamage;

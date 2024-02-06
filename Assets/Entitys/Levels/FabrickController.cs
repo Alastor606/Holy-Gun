@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 public class FabrickController : MonoBehaviour
@@ -21,6 +22,10 @@ public class FabrickController : MonoBehaviour
         while (time != 0)
         {
             await Task.Delay(1000);
+            while (Game.Paused)
+            {
+                await Task.Yield();
+            }
             time--;
             OnTimerValueChanged?.Invoke(time);
         }

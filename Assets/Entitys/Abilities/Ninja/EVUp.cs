@@ -8,7 +8,7 @@ public class EVUp : AssetSpell
 
     public override void OnTake()
     {
-        var health = Movement.singleton.Health;
+        var health = Game.Health;
         health.Evasion += _additionalEvade;
         health.OnDie += () => health.Evasion -= _additionalEvade;
     }

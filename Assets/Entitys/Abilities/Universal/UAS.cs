@@ -8,7 +8,7 @@ public class UAS : AssetSpell
     {
         foreach(var item in Movement.singleton.GetComponentsInChildren<Weapon>())
         {
-            item.UpgradeCoolingDown(Movement.singleton.Health.Regen / 100 * _percent);
+            item.UpgradeCoolingDown(Game.Health.Regen / 100 * _percent);
         }
     }
 }

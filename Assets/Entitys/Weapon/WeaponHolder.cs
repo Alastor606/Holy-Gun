@@ -1,5 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using CodeHelper.Unity;
+using System;
+using CodeHelper;
+using Unity.VisualScripting;
 
 public class WeaponHolder : MonoBehaviour
 {
@@ -8,16 +12,25 @@ public class WeaponHolder : MonoBehaviour
 
     private void Start() => SetWeapon(_mainWeapon);
 
-    public void SetWeapon(Weapon weapon)
+    public Weapon SetWeapon(UnityEngine.Object weapon)
     {
+        if (!HasFreeSlots()) return null;
         foreach(var weaponHolder in _weaponHolders)
         {
-            if (weaponHolder.transform.childCount == 0)
+            if (!weaponHolder.HasChildren())
             {
-                var weap = Instantiate(weapon, weaponHolder.transform);
+                GameObject weap = Instantiate(weapon, weaponHolder.transform).GameObject();
                 weap.transform.position = weaponHolder.transform.position;
-                break;
+                return weap.GetComponent<Weapon>();
             }
         }
+        throw new ArgumentException();
+    }
+
+    public bool HasFreeSlots()
+    {
+        int index = 0;
+        _weaponHolders.AllDo((w) => index += w.HasChildren() ? 0 : 1);
+        return index != 0;
     }
 }

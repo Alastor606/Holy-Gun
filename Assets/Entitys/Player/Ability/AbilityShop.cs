@@ -10,7 +10,6 @@ public class AbilityShop : MonoBehaviour
 
     private void Start() => _wallet.OnLevelUP += OpenShop;
     
-
     public void OpenShop()
     {
         Game.Pause();
@@ -18,25 +17,24 @@ public class AbilityShop : MonoBehaviour
         _container.Clear();
         for(int i = 0; i <3; i++)
         {
-            SpellCard card;
             if(i == 0)
             {
-                card = _container.Add(_card);
-                card.Render((int)SpellStruct.CurrentType, Random.Range(1, SpellStruct.Spells.Count));
-                card.OnSpellChoised += (_) =>
+                var c = _container.Add(_card);
+                c.OnSpellChoised += (_) =>
                 {
                     Game.Unpause();
                     _abilityCanvas.enabled = false;
                 };
+                c.Render((int)SpellStruct.CurrentType, Random.Range(1, SpellStruct.Spells.Count -1));
                 continue;
             }
-            card = _container.Add(_card);
+            var card = _container.Add(_card);
             card.OnSpellChoised += (_) =>
             {
                 Game.Unpause();
                 _abilityCanvas.enabled = false;
             };
-            card.Render(Random.Range(1, SpellStruct.Spells.Count));
+            card.Render(Random.Range(1, SpellStruct.Spells.Count - 1));
         }
     }
 }

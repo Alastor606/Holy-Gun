@@ -3066,7 +3066,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845abc92fc38b02428de2de51c4fde84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _items: []
+  _items:
+  - {fileID: 11400000, guid: e21ce92898be47c44b88608c6688da34, type: 2}
+  - {fileID: 11400000, guid: e21ce92898be47c44b88608c6688da34, type: 2}
+  - {fileID: 11400000, guid: e21ce92898be47c44b88608c6688da34, type: 2}
+  - {fileID: 11400000, guid: e21ce92898be47c44b88608c6688da34, type: 2}
+  - {fileID: 11400000, guid: e21ce92898be47c44b88608c6688da34, type: 2}
 --- !u!1 &520048028
 GameObject:
   m_ObjectHideFlags: 0

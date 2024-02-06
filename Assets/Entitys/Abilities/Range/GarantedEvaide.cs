@@ -9,8 +9,8 @@ public class GarantedEvaide : AssetSpell
     private bool _isAlive = true;
     public override async void OnTake() 
     {
-        Movement.singleton.Health.OnDie += () => _isAlive = false;
-        _baseEvasion = Movement.singleton.Health.Evasion;
+        Game.Health.OnDie += () => _isAlive = false;
+        _baseEvasion = Game.Health.Evasion;
         var time = 0;
         while (_isAlive)
         {
@@ -26,7 +26,7 @@ public class GarantedEvaide : AssetSpell
 
     private void CheckEvade()
     {
-        var player = Movement.singleton.Health;
+        var player = Game.Health;
         player.Evasion = 100;
         player.OnEvade += () => player.Evasion = _baseEvasion;
     }

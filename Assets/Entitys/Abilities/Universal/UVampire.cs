@@ -21,6 +21,6 @@ public class UVampire : AssetSpell
     }
 
     private void Heal(float damage) =>
-        Movement.singleton.Health.TakeHeal(damage / 100 * _percent);
+        Game.Health.TakeHeal(damage / 100 * _percent);
     
 }

@@ -8,6 +8,6 @@ public class MeleeVampyr : AssetSpell
     public override void OnTake() => Movement.singleton.GetComponentsInChildren<MeleeWeapon>()?.AllDo((item) => item.Additional += Vamp);
     
     private void Vamp(EnemyHealth health) =>
-        Movement.singleton.Health.TakeHeal(_heal);
+       Game.Health.TakeHeal(_heal);
     
 }

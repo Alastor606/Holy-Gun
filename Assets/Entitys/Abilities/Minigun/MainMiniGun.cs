@@ -7,6 +7,6 @@ public class MainMiniGun : AssetSpell
     public override void OnTake()
     {
         var tur = Instantiate(_turret, Movement.singleton.transform.position, Quaternion.identity);
-        Movement.singleton.Health.OnDie += () => Destroy(tur.gameObject);
+        Game.Health.OnDie += () => Destroy(tur.gameObject);
     }
 }

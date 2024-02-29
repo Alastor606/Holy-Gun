@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
 using System.Collections;
+using CodeHelper;
 
 [RequireComponent(typeof(FabrickController))]
 public class EnemyFabrick : MonoBehaviour
@@ -11,9 +12,7 @@ public class EnemyFabrick : MonoBehaviour
     [SerializeField] private FabrickController _controller;
     [Header("Enemy")]
     [SerializeField] private BossMark _boss;
-    [SerializeField] private List<EnemyStats> _easyEnemy;
-    [SerializeField] private List<EnemyStats> _mediumEnemy;
-    [SerializeField] private List<EnemyStats> _hardEnemy;
+    [SerializeField] private List<EnemyStats> _easyEnemy, _mediumEnemy, _hardEnemy;
     [Header("Stats")]
     [SerializeField] private Vector2 _spawnArea;
     [SerializeField, Range(0.5f,3)] private float _interval;
@@ -22,13 +21,13 @@ public class EnemyFabrick : MonoBehaviour
     private int _currentLevel = 0;
 
     private EnemyStats RandomEasyEnemy() =>
-        _easyEnemy[UnityEngine.Random.Range(0, _easyEnemy.Count - 1)]; 
+        _easyEnemy.GetRandom(); 
 
     private EnemyStats RandomHardEnemy() =>
-        _hardEnemy[UnityEngine.Random.Range(0, _hardEnemy.Count - 1)]; 
+        _hardEnemy.GetRandom(); 
 
     private EnemyStats RandomMediumEnemy()=> 
-        _mediumEnemy[UnityEngine.Random.Range(0, _mediumEnemy.Count - 1)];
+        _mediumEnemy.GetRandom();
 
     private void Awake()
     {
@@ -61,25 +60,19 @@ public class EnemyFabrick : MonoBehaviour
         {
             for (int i = 0; i < _enemyPerSpawn; i++)
             {
-                Vector2 spawnPoint = new Vector2(UnityEngine.Random.Range(-_spawnArea.x / 2f, _spawnArea.x / 2f),
+                Vector2 spawnPoint = new(UnityEngine.Random.Range(-_spawnArea.x / 2f, _spawnArea.x / 2f),
                 UnityEngine.Random.Range(-_spawnArea.y / 2f, _spawnArea.y / 2f));    
-                Instantiate(ChooseEnemy(), spawnPoint, Quaternion.identity);
+                Game.Instance(ChooseEnemy().GetComponent<EnemyHealth>(), spawnPoint);
             }
             yield return new WaitForSeconds(_interval);
         }
-        ClearZone();
-    }
-
-    private void ClearZone()
-    {
-        var enemys = GameObject.FindObjectsOfType<EnemyStats>();
-        foreach (var enemy in enemys) Destroy(enemy?.gameObject);
+        Game.ClearAll();
     }
 
     private async void SpawnBoss()
     {
         await Task.Delay(5000);
-        var boss = Instantiate(_boss, Vector3.zero, Quaternion.identity);
+        var boss = Game.Instance(_boss, Vector3.zero); 
     }
 
     private void OnDrawGizmosSelected()

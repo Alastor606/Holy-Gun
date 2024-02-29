@@ -216,3 +216,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soul: {fileID: 2082167301949965106, guid: 76f950f790993e44caf624856a6c5552, type: 3}
   _maxHealth: 60
+  _soulsCount: 1

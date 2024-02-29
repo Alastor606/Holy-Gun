@@ -15,13 +15,12 @@ public class Shop : MonoBehaviour
 
     public void Show()
     {
-        _container.Clear();
+        _container?.Clear();
         _canvas.enabled = true;
         for(int i = 0; i< 3; i++)
         {
             var cell = Instantiate(_cell,_container);
             cell.Render(ShopResourses.GetRandomItem());
-            cell.OnBuyed += Continue;
         }
     }
 

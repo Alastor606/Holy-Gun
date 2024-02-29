@@ -10,7 +10,8 @@ public class PlayerHealth : MonoBehaviour, IDamageAble
     public Action OnEvade;
     public float MaxHealth { get => _maxHealth; set => _maxHealth = value; }
     public float Health => _health;
-    [SerializeField]private float _maxHealth, _evasion, _backDamagePersent, _timeToDamage, _armor, _regen;
+    [SerializeField, Range(1,100)]private float _maxHealth, _evasion, _backDamagePersent, _armor, _regen;
+    [SerializeField, Range(0,2)] private float _timeToDamage;
     private float _health;
     public bool CanBeDamaged = true;
     public float Regen { get { return _regen; } set { _regen = value; } }
@@ -39,19 +40,21 @@ public class PlayerHealth : MonoBehaviour, IDamageAble
             return;
         }
 
-        float allDamage = 0;
+        float allDamage;
         if (damage - _armor < 1) allDamage = 1;
-        else allDamage = damage - _armor;
+        else allDamage = 100f * (0.06f * _armor / (1f + 0.06f * _armor));
 
         _health -= allDamage;
         OnDamaged?.Invoke(damage);
-        if (_backDamagePersent > 0)target.GetComponent<EnemyHealth>().TakeDamage(damage * 100 / _backDamagePersent);
+        if (_backDamagePersent > 0)target?.GetComponent<EnemyHealth>().TakeDamage(damage * 100 / _backDamagePersent);
 
         if (_health <= 0)
         {
             _health = 0;
             OnDie?.Invoke();
             this.gameObject.SetActive(false);
+            Alive = false;
+            Game.DestroyWeapons();
         }
         OnValueChanged?.Invoke(_maxHealth, _health);
         await Task.Delay(TimeSpan.FromSeconds(_timeToDamage));
@@ -74,4 +77,6 @@ public class PlayerHealth : MonoBehaviour, IDamageAble
             TakeHeal(_regen);
         }
     }
+
+    public void UpgradeMaxHealth(float value) => _maxHealth += value;
 }

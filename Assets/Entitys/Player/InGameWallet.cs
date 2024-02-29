@@ -15,15 +15,19 @@ public class InGameWallet : MonoBehaviour
     [SerializeField] private int _additional;
     private int _souls, _currentSouls = 0;
 
+    private void Start() =>
+        OnValueChanged?.Invoke(_currentSouls, _levelUp);
+    
     public void Add(int value)
     {
         _souls.Add(value);
-        OnValueChanged?.Invoke(_souls, _levelUp);
+        OnValueChanged?.Invoke(_currentSouls, _levelUp);
         _currentSouls.Add(value);
         if(_currentSouls >= _levelUp)
         {
             _levelUp.Add(_additional);
             _currentSouls = 0;
+            OnValueChanged?.Invoke(_currentSouls, _levelUp);
             OnLevelUP?.Invoke();
         }
     }
@@ -39,7 +43,7 @@ public class InGameWallet : MonoBehaviour
     {  
         var results = Physics2D.OverlapCircleAll(transform.position.ToV2() + _offset, _takeRadius);
         results.AllDo((item) => {
-            if (item.TryGetComponent(out Soul soul)) soul.Take(this);
+            if (item.TryGetComponent(out Soul soul) && item != null) soul.Take(this);
                 });
         
     }

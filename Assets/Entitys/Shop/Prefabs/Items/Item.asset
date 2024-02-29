@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac947563866e66a468b301b4fcc63624, type: 3}
+  m_Name: Item
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Kakoy-to predment
+  <Description>k__BackingField: abpobaobo
+  <Cost>k__BackingField: 1488
+  <Icon>k__BackingField: {fileID: 0}
+  Type: 0
+  maxHealth: 50.7
+  armor: 0
+  damage: 0
+  regen: 54.2

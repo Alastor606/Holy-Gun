@@ -24,14 +24,8 @@ internal class Shopcell : MonoBehaviour
     public void OnBuy()
     {
         if (!Movement.singleton.GetComponent<InGameWallet>().TrySpend(_currentCost)) return;
-        switch (_item.Type)
-        {
-            case ShopTypes.Weapon:
-                Game.AddWeapon(_item.Prefab);
-                break;
-            case ShopTypes.Item:
-                break;
-        }
+        _item.OnBuy();
         OnBuyed?.Invoke();
+        Destroy(this.gameObject);
     }
 }

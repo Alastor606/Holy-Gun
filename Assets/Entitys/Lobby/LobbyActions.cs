@@ -20,7 +20,7 @@ public class LobbyActions : MonoBehaviour
         _lobby.SetActive(false);
         await Task.Delay(500);
         Movement.singleton.transform.position = Vector3.zero;
-        Movement.singleton.GetComponent<AbilityChoise>().RenderAbilityChoise();
+        Game.ShowAbilities();
     }
 
     private async void GoLobby()

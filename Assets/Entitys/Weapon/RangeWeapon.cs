@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 public class RangeWeapon : Weapon
 {
     [SerializeField] protected BaseBullet _bullet;
-    private bool _isTargetFounded = false;
-    private bool _canShooting = true;
-    private BaseBullet _currentBullet;
+    protected bool _isTargetFounded = false;
+    protected bool _canShooting = true;
+    protected BaseBullet _currentBullet;
     public BaseBullet CurrentBullet { get { return _currentBullet; } set { _currentBullet = value; } }
 
     private void Start()
@@ -34,7 +34,7 @@ public class RangeWeapon : Weapon
         else _isTargetFounded = false;
     }
 
-    protected async void Shoot()
+    protected virtual async void Shoot()
     {
         if (!_isTargetFounded || !_canShooting) return;
         _canShooting = false;

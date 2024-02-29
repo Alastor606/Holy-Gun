@@ -31,12 +31,13 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_isSliding) return;
+        if (_isSliding && !_canRunning) return;
         var horizontal = _joystick.Horizontal * _speed;
         var vertical = _joystick.Vertical * _speed;
+        
 
         _rigidbody.velocity = new Vector2(horizontal, vertical);
-        if (!_canRunning) return;
+
         if (_rigidbody.velocity != Vector2.zero) OnMove?.Invoke(_rigidbody.velocity);
         else OnStay?.Invoke();
     }
@@ -50,18 +51,15 @@ public class Movement : MonoBehaviour
         _isSliding = false;
     }
 
-    public async void Slide()
+    public void Slide()
     {
         if(_rigidbody.velocity == Vector2.zero || _onCooldown) return;
         
         SlideSettings();
-        this.WaitAndDo(_cooldown, () => _onCooldown = false);
-        while (_isSliding)
-        {
-            await Task.Delay(10);
-            _rigidbody.velocity = _rigidbody.velocity * _force;
-            OnSlide?.Invoke();
-        }   
+        this.WaitAndDo(_cooldown, (x) => _onCooldown = false);
+        _rigidbody.AddForce(_rigidbody.velocity * _force);
+        OnSlide?.Invoke();
+        
         _canRunning = true;
     }
 }

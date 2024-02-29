@@ -10,8 +10,12 @@ public class AbilityChoise : MonoBehaviour
     private bool _isAbilityChoising = true;
     private int index = 0;
 
-    public void RenderCard() =>
+    public void RenderCard()
+    {
         _card.Render(index);
+        print(index);
+    }
+        
     public void Next()
     {
         if (SpellStruct.Spells.Count - 1> index) index++;
@@ -21,12 +25,12 @@ public class AbilityChoise : MonoBehaviour
         
     public void Previous()
     {
-        if (index - 1 >= 0) index--;
+        if (index - 1 > 0) index--;
         else index = SpellStruct.Spells.Count - 1;
         RenderCard();
     }
         
-    public async void RenderAbilityChoise()
+    public async void Show()
     {
         _card.Render(index);
         _card.OnSpellChoised += ChoiseAbility;

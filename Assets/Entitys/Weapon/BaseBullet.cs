@@ -2,16 +2,17 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class BaseBullet : DamageDealler
+[RequireComponent(typeof(Rigidbody2D))]
+public class BaseBullet : MonoBehaviour
 {
     public Action<EnemyHealth> OnEnemyTouch;
     [SerializeField] protected float _speed;
-    [SerializeField] private float _destroyTime;
-    private Rigidbody2D _rigidbody;
+    [SerializeField] protected float _destroyTime;
+    protected Rigidbody2D _rigidbody;
     public float Speed { get { return _speed; } }
 
     private void FixedUpdate() => Move();
-    private void Move() => _rigidbody.AddForce(transform.right * _speed);
+    protected void Move() => _rigidbody.AddForce(transform.right * _speed);
 
     private IEnumerator Start()
     {
@@ -25,7 +26,6 @@ public class BaseBullet : DamageDealler
         if (other.TryGetComponent(out EnemyHealth damageable))
         {
             OnEnemyTouch?.Invoke(damageable);
-            OnDamaged?.Invoke(_damage);
             Destroy(this.gameObject);
         }
     }

@@ -6,9 +6,13 @@ public abstract class Weapon : MonoBehaviour
     public Action<float> OnDamaged;
     public delegate void DamageAdditional(EnemyHealth health);
     public DamageAdditional Additional;
+    
+    [field: SerializeField] protected WeaponGrades Grade { get; private set; }
+    [Header("Settings")]
     [SerializeField] protected float _damage;
     [SerializeField, Range(0.1f, 2f)] protected float _coolingDown;
     [SerializeField] protected float _attackRadius, _kritikalMultiply = 1, _kriticalChanse;
+    
     protected Transform _target = null;
     public float KritValue { get { return _kritikalMultiply; } set { if (value <= 0) return; _kritikalMultiply = value; } }
     public float KritChanse { get { return _kriticalChanse; } set { if (value <= 100) _kritikalMultiply = value; } }
@@ -42,7 +46,6 @@ public abstract class Weapon : MonoBehaviour
         _coolingDown += value;
     }
 
-    
     protected virtual void FindTarget()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _attackRadius);
@@ -66,11 +69,19 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Attack(EnemyHealth damageable)
     {
-        if (Additional != null) Additional(damageable);
+        Additional?.Invoke(damageable);
         OnDamaged?.Invoke(_damage);
         var currentChanse = UnityEngine.Random.Range(0,100);
-        if (currentChanse < _kriticalChanse) damageable.TakeDamage(_damage * _kritikalMultiply);
-        else damageable.TakeDamage(_damage);
+        damageable.TakeDamage(currentChanse < _kriticalChanse ? _damage * _kritikalMultiply : _damage);
     }
     
+}
+
+public enum WeaponGrades
+{
+    Common,
+    Rare,
+    Epic,
+    Mystic,
+    Legendary
 }

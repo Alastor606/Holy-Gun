@@ -16,4 +16,4 @@ MonoBehaviour:
   _image: {fileID: 0}
   _name: 
   _description: 
-  _multiplyDistance: 0
+  _multiplyDistance: 1.71

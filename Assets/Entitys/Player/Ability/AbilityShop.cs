@@ -8,9 +8,9 @@ public class AbilityShop : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private SpellCard _card;
 
-    private void Start() => _wallet.OnLevelUP += OpenShop;
+    private void Start() => _wallet.OnLevelUP += Show;
     
-    public void OpenShop()
+    public void Show()
     {
         Game.Pause();
         _abilityCanvas.enabled = true;
